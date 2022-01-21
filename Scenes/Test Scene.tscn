@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.327521
+height = 0.848569
+
+[node name="Spatial" type="Spatial"]
+
+[node name="KinematicBody" type="KinematicBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
+shape = SubResource( 1 )
+
+[node name="Sprite3D" type="Sprite3D" parent="KinematicBody"]
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Spatial"]
