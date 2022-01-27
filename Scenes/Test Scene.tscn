@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 
@@ -7,11 +7,14 @@ points = PoolVector3Array( 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1,
 
 [sub_resource type="CubeMesh" id=3]
 
+[sub_resource type="SphereMesh" id=5]
+
+[sub_resource type="SphereShape" id=6]
+
 [node name="World" type="Spatial"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.967997, 0, 0, 0, 0.967997, 0, 0, 0, 0.967997, 0, 1.45612, 0 )
-gravity = 1.0
 jump_power = 30
 
 [node name="StaticBody" type="StaticBody" parent="."]
@@ -35,3 +38,53 @@ shape = SubResource( 4 )
 mesh = SubResource( 3 )
 skeleton = NodePath("../../..")
 material/0 = null
+
+[node name="Enemy" type="StaticBody" parent="." groups=["Enemies"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.97272, 11.6282 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Enemy"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Enemy"]
+shape = SubResource( 6 )
+
+[node name="Enemy2" type="StaticBody" parent="." groups=["Enemies"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.58341, 4.11303, 11.5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Enemy2"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Enemy2"]
+shape = SubResource( 6 )
+
+[node name="Enemy3" type="StaticBody" parent="." groups=["Enemies"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0287, 4.0008, 11.633 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Enemy3"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Enemy3"]
+shape = SubResource( 6 )
+
+[node name="UI" type="Control" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -218.0
+margin_top = -76.0
+text = "Ammo
+2/2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
